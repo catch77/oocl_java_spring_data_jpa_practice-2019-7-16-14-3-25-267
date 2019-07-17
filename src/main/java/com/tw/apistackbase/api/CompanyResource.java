@@ -26,4 +26,14 @@ public class CompanyResource {
     public Company update(@RequestBody Company company) {
         return companyRepository.save(company);
     }
+
+    @DeleteMapping(value = "/{id}", produces = {"application/json"})
+    public void delete(@PathVariable long id) {
+        companyRepository.deleteById(id);
+    }
+
+    @DeleteMapping(value = "/all")
+    public void deleteAll() {
+        companyRepository.deleteAll();
+    }
 }
