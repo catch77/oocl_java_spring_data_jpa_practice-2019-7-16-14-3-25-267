@@ -1,6 +1,8 @@
 package com.tw.apistackbase.core;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Company {
@@ -13,6 +15,9 @@ public class Company {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Profile profile;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Employee> employees;
 
     public Long getId() {
         return id;
@@ -43,5 +48,13 @@ public class Company {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 }
